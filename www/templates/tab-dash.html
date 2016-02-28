@@ -1,0 +1,46 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">{{day}}</div>
+      <div class="item item-body">
+        <div>
+          El tipo de cambio del {{day}} es <b>$ {{TC}}</b>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Calculadora dolar a pesos - T.C.: {{TC}}</div>
+      <div class="item item-body">
+        <form novalidate="" ng-submit="false"> 
+          <div class="list">
+            <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+              <span class="input-label">Monto en Dolares</span>
+              <input type="text" novalidate ng-model="inputDolares" ng-minlength="1" ng-maxlength="20" step="any" required>
+            </label>
+            <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+              <span class="input-label">Equivalente en Pesos</span>
+              <span>{{(inputDolares?inputDolares:0)*TC | number:4}}</span>
+            </label>
+          </div>     
+        </form>  
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Calculadora pesos a dolares - T.C.: {{TC}}</div>
+      <div class="item item-body">
+        <form novalidate="" ng-submit="false"> 
+          <div class="list">
+            <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+              <span class="input-label">Monto en Pesos</span>
+              <input type="text" novalidate ng-model="inputPesos" ng-minlength="1" ng-maxlength="20" step="any" required>
+            </label>
+            <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+              <span class="input-label">Equivalente en Dolares</span>
+              <span>{{(inputPesos?inputPesos:0)/TC | number:4}}</span>
+            </label>
+          </div>     
+        </form>  
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
